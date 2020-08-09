@@ -1,6 +1,6 @@
 import logging
 import math22
-
+import math
 from aiogram import Bot, Dispatcher, md, executor, types
 
 logger = logging.getLogger(__name__)
@@ -134,7 +134,15 @@ async def hello(message: types.Message):
     elif x.square:
 
         try:
-            await message.answer("Here it is: " + str(math22.is_square(int(message.text))))
+            if int(message.text) >= 0:
+                temp = math22.is_square(int(message.text))
+                if temp:
+                    await message.answer("Here it is: " + str(math22.is_square(int(message.text))) + ", result " + str(
+                        int(math.sqrt(int(message.text)))))
+                else:
+                    await message.answer("Here it is: " + str(math22.is_square(int(message.text))))
+            else:
+                await message.answer("Number cannot be < 0")
         except ValueError:
             await message.answer("Enter integer")
     else:
