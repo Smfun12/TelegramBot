@@ -147,6 +147,8 @@ async def is_fib(message: types.Message):
     math_func.prime = False
     math_func.square = False
     math_func.convert = False
+    weather.temperature=False
+    weather.wind = False
     await message.answer("Give number, and I will return n-th fibonacci")
 
 
@@ -156,6 +158,8 @@ async def convert_func(message: types.Message):
     math_func.fib = False
     math_func.prime = False
     math_func.square = False
+    weather.temperature=False
+    weather.wind = False
     await message.answer("Give base source, base destination and number, using format: 62 10 536")
 
 
@@ -187,6 +191,8 @@ async def is_prime(message: types.Message):
     math_func.fib = False
     math_func.square = False
     math_func.convert = False
+    weather.temperature = False
+    weather.wind = False
     await message.answer("Give number, and I will say if its prime")
 
 
@@ -196,6 +202,8 @@ async def is_square(message: types.Message):
     math_func.prime = False
     math_func.fib = False
     math_func.convert = False
+    weather.temperature=False
+    weather.wind = False
     await message.answer("Give number, and I will say if its square")
 
 
@@ -261,12 +269,12 @@ async def hello(message: types.Message):
             await message.answer("Enter integer")
     elif weather.temperature:
         if show_weather:
-            await message.answer("Here is it: " + temperature)
+            await message.answer("Here is it: " + temperature + " °C")
     elif weather.wind:
         if show_weather:
-            await message.answer("Here is it: " + wind_speed)
+            await message.answer("Here is it: " + wind_speed + " meter/sec")
     else:
-        await message.answer(message.text)
+        await message.answer("Your text: " + str(message.text))
 
 
 #
