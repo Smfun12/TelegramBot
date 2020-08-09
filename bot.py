@@ -86,9 +86,9 @@ async def hello(message: types.Message):
     elif x.prime:
 
         try:
-            if message.text > 1:
+            if int(message.text) > 1:
                 await message.answer("Here it is: " + str(math22.is_prime(int(message.text))))
-            elif message.text == 1:
+            elif int(message.text) == 1:
                 await message.answer("1 is not prime by default")
             else:
                 await message.answer("0 or less cannot be prime")
