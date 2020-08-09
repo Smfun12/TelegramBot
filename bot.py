@@ -1,12 +1,7 @@
 import logging
-import weather_reporter
-import weather_forcaster
-# import requests
 import math22
-import COVID19Py
-from aiogram import Bot, Dispatcher, md, executor, types
 
-# covid = COVID19Py.COVID19()
+from aiogram import Bot, Dispatcher, md, executor, types
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -45,12 +40,6 @@ async def start_cmd_handler(message: types.Message):
     await message.reply("Hi!\nWhat do you want to do?", reply_markup=keyboard_markup)
 
 
-#
-# @dp.message_handler(commands="start")
-# async def weather(message: types.Message):
-#     await message.answer(covid.getLatestChanges())
-#
-#
 @dp.message_handler(text="Fibonacci")
 async def is_fib(message: types.Message):
     x.fib = True
