@@ -9,7 +9,7 @@ from sqliter import SQLighter
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-db = SQLighter("db.db")
+db = SQLighter("db2.db")
 
 
 class MathFunctions:
