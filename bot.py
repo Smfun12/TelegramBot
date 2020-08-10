@@ -2,10 +2,14 @@ import logging
 import math22
 import math
 import requests
+
 from aiogram import Bot, Dispatcher, executor, types
+from sqliter import SQLighter
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
+
+db = SQLighter("db.db")
 
 
 class MathFunctions:
@@ -30,6 +34,10 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands='start')
 async def start_cmd_handler(message: types.Message):
+    if not db.subscriber_exists(message.from_user.username):
+        db.add_subscriber(message.from_user.username)
+    else:
+        db.update_subscription(message.from_user.id, True)
     math_func.fib = False
     math_func.prime = False
     math_func.square = False
@@ -147,7 +155,7 @@ async def is_fib(message: types.Message):
     math_func.prime = False
     math_func.square = False
     math_func.convert = False
-    weather.temperature=False
+    weather.temperature = False
     weather.wind = False
     await message.answer("Give number, and I will return n-th fibonacci")
 
@@ -158,7 +166,7 @@ async def convert_func(message: types.Message):
     math_func.fib = False
     math_func.prime = False
     math_func.square = False
-    weather.temperature=False
+    weather.temperature = False
     weather.wind = False
     await message.answer("Give base source, base destination and number, using format: 62 10 536")
 
@@ -202,7 +210,7 @@ async def is_square(message: types.Message):
     math_func.prime = False
     math_func.fib = False
     math_func.convert = False
-    weather.temperature=False
+    weather.temperature = False
     weather.wind = False
     await message.answer("Give number, and I will say if its square")
 
