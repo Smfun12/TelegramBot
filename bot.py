@@ -186,7 +186,7 @@ async def show_temperature(message: types.Message):
 
 
 @dp.message_handler(text="Wind")
-async def show_temperature(message: types.Message):
+async def show_wind(message: types.Message):
     weather.temperature = False
     weather.wind = True
     math_func.prime = False

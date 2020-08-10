@@ -21,14 +21,18 @@ class SQLighter:
 
     def add_subscriber(self, user_name, status=True):
         """Добавляем нового подписчика"""
-        with self.connection:
-            return self.cursor.execute("INSERT INTO `subscriptions` (`user_name`, `status`) VALUES(?,?)",
-                                       (user_name, status))
+        if user_name is not None:
+            with self.connection:
+                return self.cursor.execute("INSERT INTO `subscriptions` (`user_name`, `status`) VALUES(?,?)",
+                                           (user_name, status))
+        else:
+            print("User name is null")
 
     def update_subscription(self, user_name, status):
         """Обновляем статус подписки пользователя"""
         with self.connection:
-            return self.cursor.execute("UPDATE `subscriptions` SET `status` = ? WHERE `user_name` = ?", (status, user_name))
+            return self.cursor.execute("UPDATE `subscriptions` SET `status` = ? WHERE `user_name` = ?",
+                                       (status, user_name))
 
     def close(self):
         """Закрываем соединение с БД"""
