@@ -38,7 +38,7 @@ async def start_cmd_handler(message: types.Message):
         db.add_subscriber(message.from_user.username)
     else:
         db.update_subscription(message.from_user.id, True)
-        print("Already exist")
+
     math_func.fib = False
     math_func.prime = False
     math_func.square = False
