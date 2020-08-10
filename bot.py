@@ -34,11 +34,11 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands='start')
 async def start_cmd_handler(message: types.Message):
-    if not db.subscriber_exists(message.from_user.username):
-        db.add_subscriber(message.from_user.username)
-    else:
-        db.update_subscription(message.from_user.username, True)
-
+    # if not db.subscriber_exists(message.from_user.username):
+    #     db.add_subscriber(message.from_user.username)
+    # else:
+    #     db.update_subscription(message.from_user.username, True)
+    #     print("User name is exist")
     math_func.fib = False
     math_func.prime = False
     math_func.square = False
