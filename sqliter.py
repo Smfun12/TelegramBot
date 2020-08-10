@@ -13,22 +13,22 @@ class SQLighter:
         with self.connection:
             return self.cursor.execute("SELECT * FROM `subscriptions` WHERE `status` = ?", (status,)).fetchall()
 
-    def subscriber_exists(self, user_id):
+    def subscriber_exists(self, user_name):
         """Проверяем, есть ли уже юзер в базе"""
         with self.connection:
-            result = self.cursor.execute('SELECT * FROM `subscriptions` WHERE `user_id` = ?', (user_id,)).fetchall()
+            result = self.cursor.execute('SELECT * FROM `subscriptions` WHERE `user_name` = ?', (user_name,)).fetchall()
             return bool(len(result))
 
-    def add_subscriber(self, user_id, status=True):
+    def add_subscriber(self, user_name, status=True):
         """Добавляем нового подписчика"""
         with self.connection:
-            return self.cursor.execute("INSERT INTO `subscriptions` (`user_id`, `status`) VALUES(?,?)",
-                                       (user_id, status))
+            return self.cursor.execute("INSERT INTO `subscriptions` (`user_name`, `status`) VALUES(?,?)",
+                                       (user_name, status))
 
-    def update_subscription(self, user_id, status):
+    def update_subscription(self, user_name, status):
         """Обновляем статус подписки пользователя"""
         with self.connection:
-            return self.cursor.execute("UPDATE `subscriptions` SET `status` = ? WHERE `user_id` = ?", (status, user_id))
+            return self.cursor.execute("UPDATE `subscriptions` SET `status` = ? WHERE `user_name` = ?", (status, user_name))
 
     def close(self):
         """Закрываем соединение с БД"""
