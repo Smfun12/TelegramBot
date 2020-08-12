@@ -41,7 +41,6 @@ async def start_cmd_handler(message: types.Message):
     #     db.update_subscription(message.from_user.username, True)
     #     print("User name is exist")
     user_dictionary[message.from_user.id] = message.from_user.username
-    print(user_dictionary)
     math_func.fib = False
     math_func.prime = False
     math_func.square = False
@@ -86,6 +85,11 @@ async def open_site(message: types.Message):
     markup = types.InlineKeyboardMarkup()
     markup.add(types.InlineKeyboardButton("Visit", url='https://chess32x64.org'))
     await message.answer("Great! This is website of my chess club😁", parse_mode='html', reply_markup=markup)
+
+
+@dp.message_handler(commands='followers')
+async def show_followers(message: types.Message):
+    await message.answer(str(len(user_dictionary)))
 
 
 @dp.message_handler(text='Menu')
