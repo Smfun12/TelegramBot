@@ -40,7 +40,7 @@ async def start_cmd_handler(message: types.Message):
     # else:
     #     db.update_subscription(message.from_user.username, True)
     #     print("User name is exist")
-    user_dictionary[message.from_user.id] = "Username: " + str(message.from_user.username) + ", first_name: " + str(
+    user_dictionary[message.from_user.id] = "Username: @" + str(message.from_user.username) + ", first_name: " + str(
         message.from_user.first_name) + ", last_name: " + str(message.from_user.last_name)
     print(user_dictionary)
     math_func.fib = False
