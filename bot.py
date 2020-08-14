@@ -278,11 +278,13 @@ async def hello(message: types.Message):
         try:
             if int(message.text) > math_games.random_number:
                 math_games.counter += 1
-                await message.answer("Try less number")
+                if math_games.counter != 7:
+                    await message.answer("Try less number")
 
             elif int(message.text) < math_games.random_number:
                 math_games.counter += 1
-                await message.answer("Try greater number")
+                if math_games.counter != 7:
+                    await message.answer("Try greater number")
 
             else:
                 math_games.counter += 1
