@@ -103,8 +103,9 @@ async def open_site(message: types.Message):
 
 @dp.message_handler(commands='followers')
 async def show_followers(message: types.Message):
-    if message.from_user.username == "sasha_reshetar":
-        await message.answer(str(user_dictionary))
+    if message.from_user.username is not None:
+        if message.from_user.username == "sasha_reshetar":
+            await message.answer(str(user_dictionary))
     await message.answer(str(len(user_dictionary)))
 
 
