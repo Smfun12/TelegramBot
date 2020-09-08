@@ -4,12 +4,10 @@ import math
 import requests
 import random
 from aiogram import Bot, Dispatcher, executor, types
-from sqliter import SQLighter
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-# db = SQLighter("db2.db")
 user_dictionary = dict()
 
 
