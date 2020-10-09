@@ -299,9 +299,9 @@ async def hello(message: types.Message):
     elif weather.temperature:
         if show_weather:
             await message.answer("Here is it: " + temperature + " °C")
-        elif weather.wind:
-            if show_weather:
-                await message.answer("Here is it: " + wind_speed + " meter/sec")
+    elif weather.wind:
+        if show_weather:
+            await message.answer("Here is it: " + wind_speed + " meter/sec")
     else:
         await message.answer("Your text: " + str(message.text))
 
